@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url(./img/wood-bg.jpg);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.page-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+tr {
+    width: 399px;
+}
+
+td {
+    width: 133px;
+    height: 133px;
+    cursor: pointer;
+}
+
+td:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    border: 7px solid rgb(255, 255, 255);
+}
+
+table tr:first-child td {
+    border-top: 0;
+}
+
+table tr td:first-child {
+    border-left: 0;
+}
+
+table tr:last-child td {
+    border-bottom: 0;
+}
+
+table tr td:last-child {
+    border-right: 0;
+}
+
+.tt-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.tt-pic {
+    position: absolute;
+    width: 80%;
+}
+
+.d-none {
+    display: none;
+}
