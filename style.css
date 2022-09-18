@@ -4,9 +4,11 @@
 
 html {
     scroll-behavior: smooth;
+    font-family: sans-serif;
 }
 
 body {
+    position: relative;
     padding: 0;
     margin: 0;
     background-image: url(./img/wood-bg.jpg);
@@ -73,5 +75,41 @@ table tr td:last-child {
 }
 
 .d-none {
+    display: none;
+}
+
+.no-event {
+    pointer-events: none;
+}
+
+.small-pic {
+    width: 50px;
+}
+
+.player-box {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    width: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.player-name-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-name {
+    white-space: nowrap;
+    font-weight: 700;
+}
+
+.player-inactive {
     display: none;
 }

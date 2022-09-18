@@ -14,66 +14,73 @@
 </head>
 
 <body>
+    <div class="player-box">
+        <div id="player-1" class="player-name-box"><img class="small-pic" src="./img/cross.png"><span
+                class="player-name">Spieler 1 ist am Zug</span></div>
+        <div id="player-2" class="player-name-box player-inactive"><img class="small-pic" src="./img/circle.png"><span
+                class="player-name">Spieler 2 ist am Zug</span></div>
+    </div>
+
     <div class="page-wrapper">
 
         <table>
             <tr>
-                <td>
+                <td id="tt-field0" onclick="setSign(0)">
                     <div class="tt-img">
-                        <img class="tt-pic d-none" src="./img/circle.png">
-                        <img class="tt-pic d-none" src="./img/cross.png">
+                        <img id="circle0" class="tt-pic d-none" src="./img/circle.png">
+                        <img id="cross0" class="tt-pic d-none" src="./img/cross.png">
                     </div>
                 </td>
-                <td>
+                <td id="tt-field1" onclick="setSign(1)">
                     <div class="tt-img">
-                        <img class="tt-pic d-none" src="./img/circle.png">
-                        <img class="tt-pic d-none" src="./img/cross.png">
+                        <img id="circle1" class="tt-pic d-none" src="./img/circle.png">
+                        <img id="cross1" class="tt-pic d-none" src="./img/cross.png">
                     </div>
                 </td>
-                <td>
+                <td id="tt-field2" onclick="setSign(2)">
                     <div class="tt-img">
-                        <img class="tt-pic d-none" src="./img/circle.png">
-                        <img class="tt-pic d-none" src="./img/cross.png">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="tt-img">
-                        <img class="tt-pic d-none" src="./img/circle.png">
-                        <img class="tt-pic d-none" src="./img/cross.png">
-                    </div>
-                </td>
-                <td>
-                    <div class="tt-img">
-                        <img class="tt-pic d-none" src="./img/circle.png">
-                        <img class="tt-pic d-none" src="./img/cross.png">
-                    </div>
-                </td>
-                <td>
-                    <div class="tt-img">
-                        <img class="tt-pic d-none" src="./img/circle.png">
-                        <img class="tt-pic d-none" src="./img/cross.png">
+                        <img id="circle2" class="tt-pic d-none" src="./img/circle.png">
+                        <img id="cross2" class="tt-pic d-none" src="./img/cross.png">
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td id="tt-field3" onclick="setSign(3)">
                     <div class="tt-img">
-                        <img class="tt-pic d-none" src="./img/circle.png">
-                        <img class="tt-pic d-none" src="./img/cross.png">
+                        <img id="circle3" class="tt-pic d-none" src="./img/circle.png">
+                        <img id="cross3" class="tt-pic d-none" src="./img/cross.png">
                     </div>
                 </td>
-                <td>
+                <td id="tt-field4" onclick="setSign(4)">
                     <div class="tt-img">
-                        <img class="tt-pic d-none" src="./img/circle.png">
-                        <img class="tt-pic d-none" src="./img/cross.png">
+                        <img id="circle4" class="tt-pic d-none" src="./img/circle.png">
+                        <img id="cross4" class="tt-pic d-none" src="./img/cross.png">
                     </div>
                 </td>
-                <td>
+                <td id="tt-field5" onclick="setSign(5)">
                     <div class="tt-img">
-                        <img class="tt-pic d-none" src="./img/circle.png">
-                        <img class="tt-pic d-none" src="./img/cross.png">
+                        <img id="circle5" class="tt-pic d-none" src="./img/circle.png">
+                        <img id="cross5" class="tt-pic d-none" src="./img/cross.png">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td id="tt-field6" onclick="setSign(6)">
+                    <div class="tt-img">
+                        <img id="circle6" class="tt-pic d-none" src="./img/circle.png">
+                        <img id="cross6" class="tt-pic d-none" src="./img/cross.png">
+                    </div>
+                </td>
+                <td id="tt-field7" onclick="setSign(7)">
+                    <div class="tt-img">
+                        <img id="circle7" class="tt-pic d-none" src="./img/circle.png">
+                        <img id="cross7" class="tt-pic d-none" src="./img/cross.png">
+                    </div>
+                </td>
+                <td id="tt-field8" onclick="setSign(8)">
+                    <div class="tt-img">
+                        <img id="circle8" class="tt-pic d-none" src="./img/circle.png">
+                        <img id="cross8" class="tt-pic d-none" src="./img/cross.png">
                     </div>
                 </td>
             </tr>
