@@ -1,6 +1,7 @@
 let fields = [];
 let currentPlayer = 'circle';
 let gameOver = false;
+let gameMove = 0;
 
 let horizontalLineTop = 'top: 177px; transform: scale(1, 1)';
 let horizontalLineMid = 'top: 312px; transform: scale(1, 1)';
@@ -14,7 +15,6 @@ let diagonalLineRight = 'width: 422px; top: 316px; left: -7px; transform: scale(
 
 function setSign(position) {
     if (!gameOver) {
-
         if (currentPlayer == 'cross') {
             currentPlayer = 'circle';
         } else {
@@ -39,6 +39,13 @@ function showSign(currentPlayer, position) {
 function noPointerEvents(position) {
     let field = document.getElementById('tt-field' + position);
     field.classList.add('no-event');
+}
+
+
+function noPointerEventsAllFields() {
+    for (let i = 0; i < 9; i++) {
+        document.getElementById('tt-field' + i).classList.add('no-event');
+    }
 }
 
 
@@ -95,21 +102,76 @@ function checkWinner() {
         winnerLine.style = diagonalLineRight;
     }
 
+    gameEndScreen(winner);
+}
+
+
+function gameEndScreen(winner) {
     if (winner) {
         gameOver = true;
+        noPointerEventsAllFields();
         showWinnerScreen(winner);
+        showRestartBtn();
+    } else {
+        noPlayerWins();
+    }
+}
+
+
+function noPlayerWins() {
+    let winnerImage = document.getElementById('winner-image');
+    gameMove++;
+
+    if (gameMove == 9) {
+        document.getElementById('player-box').classList.add('transparent');
+        winnerImage.src = './img/win_noplayer.png';
+        winnerImage.classList.add('scale');
+        gameOver = true;
+        showRestartBtn();
     }
 }
 
 
 function showWinnerScreen(winner) {
     let winnerImage = document.getElementById('winner-image');
-    document.getElementById('player-box').classList.add('d-none');
-    document.getElementById('winner-image').classList.remove('d-none');
+    document.getElementById('player-box').classList.add('transparent');
 
     if (winner == 'cross') {
         winnerImage.src = './img/win_player1.png';
     } else {
-        console.log('Spieler 2 hat gewonnen');
+        winnerImage.src = './img/win_player2.png';
     }
+
+    winnerImage.classList.add('scale');
+}
+
+
+function showRestartBtn() {
+    document.getElementById('restart-btn').classList.remove('d-none');
+}
+
+
+function restartGame() {
+    document.getElementById('winner-image').classList.remove('scale');
+    document.getElementById('restart-btn').classList.add('d-none');
+    document.getElementById('player-box').classList.remove('transparent');
+    document.getElementById('winner-line').style = '';
+    document.getElementById('player-1').classList.remove('player-inactive');
+    document.getElementById('player-2').classList.add('player-inactive');
+    gameOver = false;
+    gameMove = 0;
+    currentPlayer = 'circle';
+
+    clearFields();
+}
+
+
+function clearFields() {
+    for (let i = 0; i < 9; i++) {
+        document.getElementById('cross' + i).classList.add('d-none');
+        document.getElementById('circle' + i).classList.add('d-none');
+        document.getElementById('tt-field' + i).classList.remove('no-event');
+    }
+
+    fields = [];
 }

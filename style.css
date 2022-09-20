@@ -22,6 +22,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 tr {
@@ -115,7 +116,6 @@ table tr td:last-child {
 }
 
 #winner-line {
-    opacity: 1;
     height: 5px;
     width: 320px;
     border-radius: 8px;
@@ -126,16 +126,80 @@ table tr td:last-child {
     margin: auto;
     z-index: 100;
     transform: scale(0, 0);
-    transition: all 500ms ease-in-out;
+    animation: zoomIn 500ms ease-in-out;
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
 }
 
 .win {
     position: absolute;
     left: 0;
     right: 0;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
     margin: auto;
     z-index: 200;
-    border-radius: 100%;
-    width: 140px;
+    width: 400px;
     object-fit: cover;
+    transition: transform 500ms ease-in-out;
+}
+
+.transparent {
+    opacity: 0.4;
+}
+
+.scale {
+    transform: translateY(-50%) scale(1);
+    transition: transform 500ms ease-in-out;
+}
+
+#restart-btn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    border: none;
+    background-color: rgb(254, 216, 71);
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+    z-index: 300;
+}
+
+button:hover {
+    background-color: rgb(255, 230, 129);
+    transition: all 225ms ease-in-out;
+}
+
+@media(max-width:430px) {
+    tr {
+        width: 90vw;
+    }
+
+    td {
+        width: 30vw;
+    }
+
+    .win {
+        width: 90vw;
+    }
 }
