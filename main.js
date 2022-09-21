@@ -3,14 +3,8 @@ let currentPlayer = 'circle';
 let gameOver = false;
 let gameMove = 0;
 
-let horizontalLineTop = 'top: 177px; transform: scale(1, 1)';
-let horizontalLineMid = 'top: 312px; transform: scale(1, 1)';
-let horizontalLineBottom = 'top: 447px; transform: scale(1, 1)';
-let verticalLineLeft = 'top: 316px; left: -265px; transform: scale(1, 1) rotate(90deg)';
-let verticalLineMid = 'top: 316px; transform: scale(1, 1) rotate(90deg)';
-let verticalLineRight = 'top: 316px; left: 273px; transform: scale(1, 1) rotate(90deg)';
-let diagonalLineLeft = 'width: 422px; top: 316px; left: 10px; transform: scale(1, 1) rotate(45deg)';
-let diagonalLineRight = 'width: 422px; top: 316px; left: -7px; transform: scale(1, 1) rotate(135deg)';
+let endAudio = new Audio('./sounds/end_game.mp3');
+endAudio.volume = 0.5;
 
 
 function setSign(position) {
@@ -57,57 +51,64 @@ function setActivePlayer() {
 
 function checkWinner() {
     let winner;
-    let winnerLine = document.getElementById('winner-line');
 
     // horizontal rows
     if (fields[0] == fields[1] && fields[1] == fields[2] && fields[0]) {
         winner = fields[0];
-        winnerLine.style = horizontalLineTop;
+        changeBgColor(0, 1, 2);
     }
 
     if (fields[3] == fields[4] && fields[4] == fields[5] && fields[3]) {
         winner = fields[3];
-        winnerLine.style = horizontalLineMid;
+        changeBgColor(3, 4, 5);
     }
 
     if (fields[6] == fields[7] && fields[7] == fields[8] && fields[6]) {
         winner = fields[6];
-        winnerLine.style = horizontalLineBottom;
+        changeBgColor(6, 7, 8);
     }
 
     // vertical rows
     if (fields[0] == fields[3] && fields[3] == fields[6] && fields[0]) {
         winner = fields[0];
-        winnerLine.style = verticalLineLeft;
+        changeBgColor(0, 3, 6);
     }
 
     if (fields[1] == fields[4] && fields[4] == fields[7] && fields[1]) {
         winner = fields[1];
-        winnerLine.style = verticalLineMid;
+        changeBgColor(1, 4, 7);
     }
 
     if (fields[2] == fields[5] && fields[5] == fields[8] && fields[2]) {
         winner = fields[2];
-        winnerLine.style = verticalLineRight;
+        changeBgColor(2, 5, 8);
     }
 
     // diagonal rows
     if (fields[0] == fields[4] && fields[4] == fields[8] && fields[0]) {
         winner = fields[0];
-        winnerLine.style = diagonalLineLeft;
+        changeBgColor(0, 4, 8);
     }
 
     if (fields[2] == fields[4] && fields[4] == fields[6] && fields[2]) {
         winner = fields[2];
-        winnerLine.style = diagonalLineRight;
+        changeBgColor(2, 4, 6);
     }
 
     gameEndScreen(winner);
 }
 
 
+function changeBgColor(f1, f2, f3) {
+    document.getElementById(`tt-field${f1}`).classList.add('green-bg');
+    document.getElementById(`tt-field${f2}`).classList.add('green-bg');
+    document.getElementById(`tt-field${f3}`).classList.add('green-bg');
+}
+
+
 function gameEndScreen(winner) {
     if (winner) {
+        endAudio.play();
         gameOver = true;
         noPointerEventsAllFields();
         showWinnerScreen(winner);
@@ -155,7 +156,6 @@ function restartGame() {
     document.getElementById('winner-image').classList.remove('scale');
     document.getElementById('restart-btn').classList.add('d-none');
     document.getElementById('player-box').classList.remove('transparent');
-    document.getElementById('winner-line').style = '';
     document.getElementById('player-1').classList.remove('player-inactive');
     document.getElementById('player-2').classList.add('player-inactive');
     gameOver = false;
@@ -171,6 +171,7 @@ function clearFields() {
         document.getElementById('cross' + i).classList.add('d-none');
         document.getElementById('circle' + i).classList.add('d-none');
         document.getElementById('tt-field' + i).classList.remove('no-event');
+        document.getElementById('tt-field' + i).classList.remove('green-bg');
     }
 
     fields = [];
